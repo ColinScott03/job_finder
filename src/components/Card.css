@@ -1,0 +1,78 @@
+.card-container {
+    background-color: #E6E6E6;
+    width: 400px;
+    min-height: 500px;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    text-align: center;
+  }
+  
+  .card-container h2 {
+    font-size: 24px;
+    margin-bottom: 4px;
+  }
+  
+  .card-container h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .card-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 20px;
+  }
+  
+  .card-info p {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  
+  .view-button {
+    background-color: #B0B3BD;
+    color: black;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .view-button:hover {
+    background-color: #797b81;
+  }
+  
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    z-index: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  .nav-button.left {
+    background-color: #D64545;
+    left: -60px;
+  }
+  
+  .nav-button.right {
+    background-color: #5FB25D;
+    right: -60px;
+  }
+  
