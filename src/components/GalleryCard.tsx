@@ -1,7 +1,11 @@
+import styles from './GalleryCard.module.css'
+
 const GalleryCard = () => {
 
     return (
-        <h1>Hey</h1>
+        <div className={styles.galleryCard}>
+            <h1>Yo</h1>
+        </div>
     )
 }
 export default GalleryCard;
