@@ -1,8 +1,43 @@
+'use client';
+import Head from "next/head";
 import Navbar from "@/components/Navbar";
+import { useRouter } from "next/navigation";
+
 
 export default function Home() {
+
+  const router = useRouter();
+
   return (
-    <div className="home-background grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6"
+      style={{ backgroundImage: "url('/sanfordStadiumPicture.jpg')" }}>
+
+
+      <div className="flex flex-col justify-center bg-neutral-200 bg-opacity-90 p-8 rounded-xl shadow-xl w-full max-w-xl h-[400px] transform -translate-x-4 sm:-translate-x-50">
+
+
+        <div className="mb-50 flex flex-col justify-between items-center min-h-[0px]">
+
+          <h1 className="text-3xl font-bold mb-4 text-center">Finding jobs has never been more simple!</h1>
+
+          <p className="text-center">Based on your personalized interests, you can swipe right on jobs you’re interested in or left on jobs you don’t like so much.</p>
+
+          <div className="mt-20 flex gap-4">
+            <button
+              onClick={() => router.push('/settings')}
+              className="bg-neutral-700 text-white text-2xl font-semibold px-10 py-4 rounded-xl hover:bg-neutral-500 transition">
+              Get started!
+            </button>
+            <button
+              onClick={() => router.push('/login')}
+              className="bg-white text-neutral-700 border border-neutral-500 text-2xl font-semibold px-10 py-4 rounded-xl hover:bg-neutral-100 transition">
+              Login
+            </button>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   );
 }
