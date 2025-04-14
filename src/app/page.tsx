@@ -1,6 +1,5 @@
 'use client';
-import Head from "next/head";
-import Navbar from "@/components/Navbar";
+
 import { useRouter } from "next/navigation";
 
 
