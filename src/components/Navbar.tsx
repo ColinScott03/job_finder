@@ -25,7 +25,7 @@ const Navbar = ({ currentPath }: NavbarProps) => {
                 <button 
                 className="viewButton"
                 onClick={() => {
-                    router.push('/'); // Redirect to login page
+                    router.push('/');
                 }}
                 >
                 Logout
