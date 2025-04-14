@@ -70,7 +70,7 @@ const Gallery = () => {
             </div>  
             <div className="grid grid-cols-3">
             {jobs.map((job) => (
-          <GalleryCard key={job.id} title={job.title} image={job.image} company={job.company} description={job.description} salary={job.salary} location={job.location}/>
+          <GalleryCard key={job.id} title={job.title} image={job.image} company={job.company} description={job.description} salary={job.salary} location={job.location} link={job.link}/>
         ))}
             </div>
         </div>

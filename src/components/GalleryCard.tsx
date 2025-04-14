@@ -6,9 +6,10 @@ type GalleryCardProps = {
     description: string;
     salary: string;
     location: string;
+    link: string;
 }
 
-const GalleryCard = ({ title, image, company, description, salary, location }: GalleryCardProps) => {
+const GalleryCard = ({ title, image, company, description, salary, location, link }: GalleryCardProps) => {
 
     return (
         <div className={styles.galleryCard}>
@@ -18,6 +19,9 @@ const GalleryCard = ({ title, image, company, description, salary, location }: G
             <p>{description}</p>
             <p>{salary}</p>
             <p>{location}</p>
+            <a href={link}>
+                <button className={styles.viewButton}>View Job Posting</button>
+            </a>
         </div>
     )
 }
