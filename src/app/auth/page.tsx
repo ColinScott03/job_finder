@@ -7,11 +7,11 @@ import Card from '@/components/Card';
 const jobs = [
   {
     title: 'Frontend Developer',
-    company: 'Tech Corp',
+    company: 'Intel',
     description: 'Build and maintain user interfaces.',
     salary: '$80,000 - $100,000',
     location: 'Remote',
-    image: '/job1.png',
+    image: '/intel.png',
     link: '/jobs/frontend-developer',
   },
   {
@@ -20,7 +20,7 @@ const jobs = [
     description: 'Develop server-side logic.',
     salary: '$90,000 - $110,000',
     location: 'New York, NY',
-    image: '/job2.png',
+    image: '/TechNova.png',
     link: '/jobs/backend-engineer',
   },
   {
@@ -29,7 +29,7 @@ const jobs = [
     description: 'Build and maintain both the front-end and the back-end of a website.',
     salary: '$90,000 - $110,000',
     location: 'Seattle, WA',
-    image: '/job2.png',
+    image: '/amazon.png',
     link: '/jobs/backend-engineer',
   },
   {
@@ -38,7 +38,7 @@ const jobs = [
     description: 'Responsible for cyber security innovation and architecture.',
     salary: '$90,000 - $110,000',
     location: 'Chicago, IL',
-    image: '/job2.png',
+    image: '/BofA.png',
     link: '/jobs/backend-engineer',
   },
   {
@@ -47,7 +47,7 @@ const jobs = [
     description: 'Analyze government sector data',
     salary: '$90,000 - $100,000',
     location: 'New York, NY',
-    image: '/job2.png',
+    image: '/deloitte.png',
     link: '/jobs/backend-engineer',
   },
 ];
