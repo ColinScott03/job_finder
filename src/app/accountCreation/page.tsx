@@ -27,7 +27,7 @@ export default function accountCreation() {
     // normally, we would store the user information in the database, but we have not had to set up database yet
     setUsername('');
     setPassword('');
-    router.push('/auth');
+    router.push('/settings');
   };
 
 
