@@ -61,7 +61,7 @@ const Gallery = () => {
                 <h1 className="text-5xl font-bold">My Jobs</h1>
                 <div className="absolute right-5">
                     <select className="bg-gray-300 p-2 border rounded">
-                        <option disabled selected>Sort by:</option>
+                        <option value="" disabled>Sort by:</option>
                         <option value="rating">Rating</option>
                         <option value="location">Location</option>
                         <option value="salary">Salary</option>
@@ -70,7 +70,7 @@ const Gallery = () => {
             </div>  
             <div className="grid grid-cols-3">
             {jobs.map((job) => (
-          <GalleryCard key={job.id} title={job.title} image={job.image} />
+          <GalleryCard key={job.id} title={job.title} image={job.image} company={job.company} description={job.description} salary={job.salary} location={job.location}/>
         ))}
             </div>
         </div>
