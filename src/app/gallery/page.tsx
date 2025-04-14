@@ -60,7 +60,7 @@ const Gallery = () => {
             <div className="flex justify-center mb-6 relative">
                 <h1 className="text-5xl font-bold">My Jobs</h1>
                 <div className="absolute right-5">
-                    <select className="bg-gray-300 p-2 border rounded">
+                    <select className="bg-gray-300 p-2 border rounded cursor-pointer">
                         <option value="" disabled selected>Sort by:</option>
                         <option value="rating">Rating</option>
                         <option value="location">Location</option>

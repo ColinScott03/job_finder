@@ -82,7 +82,7 @@ const Settings = () => {
                         value={formData.industry}
                         onChange={handleChange}
                         required
-                        className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
+                        className="w-full p-2 border bg-slate-900 border-gray-300 rounded cursor-pointer"
                     >
                         <option value='' disabled selected>Select</option>
                         <option value='it'>I.T.</option>
@@ -111,8 +111,8 @@ const Settings = () => {
                         </div>
                     </div>
                     <div className="flex justify-center gap-20">
-                        <button type="submit" className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4">Submit</button>
-                        <button onClick={clearForm} className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4">Clear</button>
+                        <button type="submit" className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4 cursor-pointer">Submit</button>
+                        <button onClick={clearForm} className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4 cursor-pointer">Clear</button>
                     </div>
                 </form>
             </div>

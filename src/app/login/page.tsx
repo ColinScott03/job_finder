@@ -41,7 +41,7 @@ export default function LoginPage() {
 
           <button
             type="submit"
-            className="bg-gray-400 text-xl font-semibold py-2 rounded shadow hover:bg-gray-500 transition"
+            className="bg-gray-400 text-xl font-semibold py-2 rounded shadow hover:bg-gray-500 transition cursor-pointer"
           >
             Continue
           </button>

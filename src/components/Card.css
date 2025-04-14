@@ -11,11 +11,13 @@
     justify-content: space-between;
     position: relative;
     text-align: center;
+    border: 5px solid black;
   }
   
   .card-container h2 {
     font-size: 24px;
     margin-bottom: 4px;
+    
   }
   
   .card-container h3 {
@@ -25,10 +27,9 @@
   }
   
   .card-container img {
-    width: 150px;
-    height: 150px;
     object-fit: contain;
     margin-bottom: 20px;
+    border: 2px solid black;
   }
   
   .card-info p {
@@ -69,10 +70,13 @@
   .nav-button.left {
     background-color: #D64545;
     left: -60px;
+    border: 2px solid black;
+
   }
   
   .nav-button.right {
     background-color: #5FB25D;
     right: -60px;
+    border: 2px solid black;
   }
   

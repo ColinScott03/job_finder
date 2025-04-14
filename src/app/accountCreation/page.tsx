@@ -23,6 +23,11 @@ export default function accountCreation() {
       return;
     }
 
+    if (username == '' || password == '') {
+      alert("Please enter username and password");
+      return;
+    }
+
     isLoggedIn = true;
     // normally, we would store the user information in the database, but we have not had to set up database yet
     setUsername('');
@@ -73,7 +78,7 @@ export default function accountCreation() {
 
           <button
             type="submit"
-            className="bg-gray-400 text-xl font-semibold py-2 rounded shadow hover:bg-gray-500 transition"
+            className="bg-gray-400 text-xl font-semibold py-2 rounded shadow hover:bg-gray-500 transition cursor-pointer"
           >
             Continue
           </button>
