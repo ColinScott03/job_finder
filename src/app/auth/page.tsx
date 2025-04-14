@@ -67,7 +67,7 @@ export default function AuthPage() {
 
   return (
     <div className="app-container">
-      <Navbar />
+      <div className="card-wrapper"></div>
       <Card job={job} onNext={handleNext} onPrev={handlePrev} />
       <footer className="footer">Copyright MARC</footer>
 

@@ -1,4 +1,26 @@
 .navbar {
     background-color: #20262B;
     padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+}
+
+.logoWrapper {
+    margin-top: 100px;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px
+}
+
+.settingsIcon, .homeIcon, .galleryIcon {
+    width: 45px;
+    cursor: pointer;
+}
+
+.settingsIcon:hover, .homeIcon:hover, .galleryIcon:hover {
+    background-color: red;
+    width: 55px
 }
