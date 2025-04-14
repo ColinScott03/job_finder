@@ -22,6 +22,14 @@ const Navbar = ({ currentPath }: NavbarProps) => {
 
             {['/settings', '/auth', '/gallery'].includes(currentPath) && (
             <div className="buttons">
+                <button 
+                className="viewButton"
+                onClick={() => {
+                    router.push('/'); // Redirect to login page
+                }}
+                >
+                Logout
+                </button>
                 <button onClick={() => router.push('/auth')}>
                     <img
                         className="homeIcon"

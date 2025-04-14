@@ -24,3 +24,20 @@
     background-color: red;
     width: 55px
 }
+
+.viewButton {
+    background-color: #B0B3BD;
+    color: black;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px
+  }
+
+  .viewButton:hover {
+    background-color: gray;
+  }
