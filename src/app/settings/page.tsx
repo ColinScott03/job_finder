@@ -1,9 +1,13 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Content from "../../components/Content";
 import { useState } from 'react';
 
 const Settings = () => {
+
+    const router = useRouter();
+
     const initialFormState = {
         owner: 0,
         name: '',
@@ -15,9 +19,9 @@ const Settings = () => {
         inPerson: false,
         remote: false
     };
-    
+
     const [formData, setFormData] = useState(initialFormState);
-    
+
     const clearForm = () => {
         setFormData(initialFormState);
     };
@@ -30,9 +34,9 @@ const Settings = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value, type, checked } = e.target;
         setFormData(prev => ({
-        ...prev,
-        [name]: type === 'checkbox' ? checked : (name === 'owner' ? Number(value) : value),
-    }));
+            ...prev,
+            [name]: type === 'checkbox' ? checked : (name === 'owner' ? Number(value) : value),
+        }));
     }
 
     return (
@@ -42,43 +46,43 @@ const Settings = () => {
                 <form onSubmit={handleSubmit} className="space-y-4 w-[25vw] text-neutral-300 justify-end">
                     <h3 className="text-xl">Name</h3>
                     <input
-                    name="name"
-                    type="string"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Name"
-                    required
-                    className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
+                        name="name"
+                        type="string"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Name"
+                        required
+                        className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
                     />
                     <h3 className="text-xl">Interests</h3>
                     <input
-                    name="interests"
-                    type="string"
-                    value={formData.interests}
-                    onChange={handleChange}
-                    placeholder="E.g. Gardening, Social, Computers"
-                    required
-                    className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
+                        name="interests"
+                        type="string"
+                        value={formData.interests}
+                        onChange={handleChange}
+                        placeholder="E.g. Gardening, Social, Computers"
+                        required
+                        className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
                     />
                     <h3 className="text-xl">Location</h3>
                     <input
-                    name="location"
-                    type="string"
-                    value={formData.location}
-                    onChange={handleChange}
-                    placeholder="City, State"
-                    required
-                    className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
+                        name="location"
+                        type="string"
+                        value={formData.location}
+                        onChange={handleChange}
+                        placeholder="City, State"
+                        required
+                        className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
                     />
 
                     <h3 className="text-xl">Industry</h3>
                     <select
-                    name="industry"
-                    //type="string"
-                    value={formData.industry}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
+                        name="industry"
+                        //type="string"
+                        value={formData.industry}
+                        onChange={handleChange}
+                        required
+                        className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
                     >
                         <option value='' disabled selected>Select</option>
                         <option value='it'>I.T.</option>
@@ -90,25 +94,25 @@ const Settings = () => {
                     <h3 className="text-xl">Job Type</h3>
                     <div className="flex flex-col justify-between items-center w-full h-50 p-2 border bg-slate-900 border-gray-300 rounded">
                         <div className="">
-                            <input type="checkbox" name="fullTime" checked={formData.fullTime} onChange={handleChange} id="fullTimeBox" className="h-4 w-4"/>
+                            <input type="checkbox" name="fullTime" checked={formData.fullTime} onChange={handleChange} id="fullTimeBox" className="h-4 w-4" />
                             <label className="text-2xl">Full-time</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="partTime" checked={formData.partTime} onChange={handleChange} id="partTimeBox" className="h-4 w-4"/>
+                            <input type="checkbox" name="partTime" checked={formData.partTime} onChange={handleChange} id="partTimeBox" className="h-4 w-4" />
                             <label className="text-2xl">Part-time</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="inPerson" checked={formData.inPerson} onChange={handleChange} id="inPersonBox" className="h-4 w-4"/>
+                            <input type="checkbox" name="inPerson" checked={formData.inPerson} onChange={handleChange} id="inPersonBox" className="h-4 w-4" />
                             <label className="text-2xl">In Person</label>
                         </div>
                         <div>
-                            <input type="checkbox" name="remote" checked={formData.remote} onChange={handleChange} id="remoteBox" className="h-4 w-4"/>
+                            <input type="checkbox" name="remote" checked={formData.remote} onChange={handleChange} id="remoteBox" className="h-4 w-4" />
                             <label className="text-2xl">Remote</label>
                         </div>
                     </div>
                     <div className="flex justify-center gap-20">
                         <button type="submit" className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4">Submit</button>
-                        <button onClick={clearForm}className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4">Clear</button>
+                        <button onClick={clearForm} className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4">Clear</button>
                     </div>
                 </form>
             </div>

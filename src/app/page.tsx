@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 
 export default function Home() {
 
+
   const router = useRouter();
 
   return (
@@ -23,7 +24,7 @@ export default function Home() {
 
           <div className="mt-20 flex gap-4">
             <button
-              onClick={() => router.push('/settings')}
+              onClick={() => router.push('/accountCreation')}
               className="bg-neutral-700 text-white text-2xl font-semibold px-10 py-4 rounded-xl hover:bg-neutral-500 transition">
               Get started!
             </button>
@@ -33,10 +34,8 @@ export default function Home() {
               Login
             </button>
           </div>
-
         </div>
       </div>
-
     </div>
   );
 }
