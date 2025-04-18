@@ -7,7 +7,7 @@ interface IUser extends Document {
 
 const userSchema = new Schema<IUser>({
     username: {
-        tupe: String,
+        type: String,
         required: true,
     },
     password: {
