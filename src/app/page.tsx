@@ -1,10 +1,12 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import connectMongoDB from "../../config/mongodb";
 
 
 export default function Home() {
 
+  connectMongoDB();
 
   const router = useRouter();
 
