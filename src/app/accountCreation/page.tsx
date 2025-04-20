@@ -15,7 +15,7 @@ export default function accountCreation() {
 
 
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (password != confirmPassword) {
@@ -28,8 +28,19 @@ export default function accountCreation() {
       return;
     }
 
+    try {
+      const response = await fetch('/api/items', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      })
+    } catch (error) {
+      console.error('Could not create user. Please try again.', error);
+    }
+
     isLoggedIn = true;
-    // normally, we would store the user information in the database, but we have not had to set up database yet
     setUsername('');
     setPassword('');
     router.push('/settings');
