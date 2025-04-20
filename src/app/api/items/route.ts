@@ -6,6 +6,13 @@ import { NextRequest } from "next/server";
 // add user
 export async function POST(request: NextRequest) {
     const { username, password } = await request.json();
+    const existingUser = await User.findOne({ username });
+
+    if (existingUser) {
+      return NextResponse.json(
+        { status: 409 }
+      );
+    }
     await connectMongoDB();
     await User.create({ username, password });
     return NextResponse.json({ message: "User added successfully" }, { status: 201 });
