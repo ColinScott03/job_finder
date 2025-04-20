@@ -36,10 +36,15 @@ export default function accountCreation() {
         },
         body: JSON.stringify({ username, password }),
       })
+
+      if (response.status == 409) {
+        const data = await response.json();
+        alert('Username is already taken. Please try again.');
+        return;
+      }
     } catch (error) {
       console.error('Could not create user. Please try again.', error);
     }
-
     isLoggedIn = true;
     setUsername('');
     setPassword('');
