@@ -9,6 +9,11 @@ interface IUser extends Document {
     username: string;
     password: string;
     savedJobs: Job[];
+    name: string;
+    interests: string;
+    location: string;
+    industry: string;
+    jobType: string;
 }
 
 const userSchema = new Schema<IUser>({
@@ -25,7 +30,22 @@ const userSchema = new Schema<IUser>({
             title: String,
             company: String
         }
-    ]
+    ],
+    name: {
+        type: String,
+    },
+    interests: {
+        type: String,
+    },
+    location: {
+        type: String,
+    },
+    industry: {
+        type: String,
+    },
+    jobType: {
+        type: String,
+    },
 });
 
 const User: Model<IUser> = mongoose.models.User || mongoose.model<IUser>("User", userSchema);
