@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import { useState } from "react";
-import bcrypt from 'bcrypt';
 
 export default function accountCreation() {
 
