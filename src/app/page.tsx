@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import connectMongoDB from "../../config/mongodb";
+import Image from 'next/image';
 
 
 export default function Home() {
@@ -11,11 +12,16 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <div className="min-h-screen bg-cover bg-center flex items-center justify-center px-4 sm:px-6"
+
+    <div className="min-h-screen bg-cover bg-center flex flex-col items-center justify-center px-4 sm:px-6"
       style={{ backgroundImage: "url('/sanfordStadiumPicture.jpg')" }}>
 
+      <div className="mt-6 flex items-center">
+        <Image src="/smallLogoWhite.png" alt="Tender Logo" width={400} height={400} />
+      </div>
 
-      <div className="flex flex-col justify-center bg-neutral-200 bg-opacity-90 p-8 rounded-xl shadow-xl w-full max-w-xl h-[400px] transform -translate-x-4 sm:-translate-x-50">
+
+      <div className="flex flex-col justify-center bg-neutral-200 bg-opacity-90 p-8 rounded-xl shadow-xl w-full max-w-xl h-[400px] transform ">
 
 
         <div className="mb-50 flex flex-col justify-between items-center min-h-[0px]">
