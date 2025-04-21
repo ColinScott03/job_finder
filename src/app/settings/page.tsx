@@ -28,6 +28,37 @@ const Settings = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        const jobTypes: string[] = [];
+        if (formData.fullTime) jobTypes.push("Full-Time");
+        if (formData.partTime) jobTypes.push("Part-Time");
+        if (formData.inPerson) jobTypes.push("In Person");
+        if (formData.remote) jobTypes.push("Remote");
+
+        const jobTypeString = jobTypes.join(", ");
+
+        try {
+            const response = await fetch('/api/items/68068967eae6a7d2c14677f5', {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                    name: formData.name,
+                    interests: formData.interests,
+                    location: formData.location,
+                    industry: formData.industry,
+                    jobType: jobTypeString
+                }),
+            })
+      
+            if (response.status == 409) {
+              const data = await response.json();
+              alert('Username is already taken. Please try again.');
+              return;
+            }
+          } catch (error) {
+            console.error('Could not create user. Please try again.', error);
+          }
         console.log(JSON.stringify(formData));
     }
 
