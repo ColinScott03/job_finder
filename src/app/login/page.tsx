@@ -18,7 +18,6 @@ export default function LoginPage() {
             e.preventDefault();
             router.push('/auth');
             isLoggedIn = true;
-
           }}
         >
           <div>

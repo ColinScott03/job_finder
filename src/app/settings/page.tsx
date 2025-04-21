@@ -32,7 +32,9 @@ const Settings = () => {
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const { name, value, type, checked } = e.target;
+        const target = e.target as HTMLInputElement; // 👈 Cast to HTMLInputElement
+        const { name, type, value } = target;
+        const checked = target.checked;
         setFormData(prev => ({
             ...prev,
             [name]: type === 'checkbox' ? checked : (name === 'owner' ? Number(value) : value),
@@ -43,7 +45,13 @@ const Settings = () => {
         <Content>
             <div className="flex flex-col items-center m-20 w-[40vw] h-210 bg-[#20262B] border-10">
                 <h2 className="m-5 text-3xl text-neutral-300 block">Account Details</h2>
-                <form onSubmit={handleSubmit} className="space-y-4 w-[25vw] text-neutral-300 justify-end">
+                <form className="space-y-4 w-[25vw] text-neutral-300 justify-end"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        router.push('/auth');
+                        handleSubmit;
+                    }}
+                >
                     <h3 className="text-xl">Name</h3>
                     <input
                         name="name"
