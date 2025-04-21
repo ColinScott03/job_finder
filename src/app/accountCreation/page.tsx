@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import { useState } from "react";
+import bcrypt from 'bcrypt';
 
 export default function accountCreation() {
 
@@ -96,6 +97,7 @@ export default function accountCreation() {
             type="submit"
             className="bg-gray-400 text-xl font-semibold py-2 rounded shadow hover:bg-gray-500 transition cursor-pointer"
           >
+            
             Continue
           </button>
         </form>
