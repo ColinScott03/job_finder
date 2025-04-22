@@ -2,9 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import Content from "../../components/Content";
-import { useState } from 'react';
+import { useState, useContext, createContext } from 'react';
+import { userContext } from "../context/userContext";
+import { useUser } from '../context/userContext';
+
 
 const Settings = () => {
+    const { id } = useUser();
 
     const router = useRouter();
 
@@ -37,7 +41,7 @@ const Settings = () => {
         const jobTypeString = jobTypes.join(", ");
 
         try {
-            const response = await fetch('/api/items/68068967eae6a7d2c14677f5', {
+            const response = await fetch(`/api/items/${id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',

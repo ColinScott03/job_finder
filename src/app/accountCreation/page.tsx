@@ -3,8 +3,11 @@
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import { useState } from "react";
+import { useContext } from "react";
+import { userContext } from "../context/userContext";
 
 export default function accountCreation() {
+  const { setUser } = useContext(userContext);
 
   let isLoggedIn = false;
   const router = useRouter();
@@ -42,6 +45,9 @@ export default function accountCreation() {
         alert('Username is already taken. Please try again.');
         return;
       }
+
+      const data = await response.json();
+      setUser({ id: data.id }); 
     } catch (error) {
       console.error('Could not create user. Please try again.', error);
     }
