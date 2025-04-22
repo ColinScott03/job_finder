@@ -24,9 +24,18 @@ const Navbar = ({ currentPath }: NavbarProps) => {
             <div className="buttons">
                 <button 
                 className="viewButton"
-                onClick={() => {
-                    router.push('/');
-                }}
+                onClick={async () => {
+                    try {
+                      await fetch("/api/logout", {
+                        method: "POST",
+                      });
+                      console.log("Successful Logout");
+                
+                      router.push("/");
+                    } catch (error) {
+                      console.error("Logout failed:", error);
+                    }
+                  }}
                 >
                 Logout
                 </button>
