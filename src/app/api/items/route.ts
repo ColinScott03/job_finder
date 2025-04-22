@@ -6,17 +6,18 @@ import bcrypt from "bcrypt";
 
 // add user
 export async function POST(request: NextRequest) {
-    const { username, password } = await request.json();
-    const existingUser = await User.findOne({ username });
-
-    if (existingUser) {
-      return NextResponse.json(
-        { status: 409 }
-      );
-    }
     await connectMongoDB();
 
+    const { username, password } = await request.json();
+    const existingUser = await User.findOne({ username });
+    if (existingUser) {
+        return NextResponse.json(
+          { message: "Username already exists" },
+          { status: 409 }
+        );
+      }
+
     const hashedPassword = await bcrypt.hash(password, 8);
-    await User.create({ username, password: hashedPassword });
-    return NextResponse.json({ message: "User added successfully" }, { status: 201 });
+    const newUser = await User.create({ username, password: hashedPassword });
+    return NextResponse.json({ message: "User added successfully", id: newUser._id }, { status: 201 });
 }
