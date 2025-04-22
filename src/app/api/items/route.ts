@@ -19,5 +19,10 @@ export async function POST(request: NextRequest) {
 
     const hashedPassword = await bcrypt.hash(password, 8);
     const newUser = await User.create({ username, password: hashedPassword });
-    return NextResponse.json({ message: "User added successfully", id: newUser._id }, { status: 201 });
+    const response = NextResponse.json({ message: "User added successfully", id: newUser._id }, { status: 201 });
+    response.cookies.set("sessionToken", String(newUser._id), {
+      httpOnly: true,
+      path: "/",
+    });
+    return response;
 }
