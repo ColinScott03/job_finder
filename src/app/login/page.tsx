@@ -3,8 +3,12 @@
 import { useRouter } from "next/navigation";
 import Image from 'next/image';
 import { useState } from "react";
+import { useContext } from "react";
+import { userContext } from "../context/userContext";
 
 export default function LoginPage() {
+  const { setUser } = useContext(userContext);
+
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -25,6 +29,7 @@ export default function LoginPage() {
         const data = await res.json();
         console.log("Login successful:", data);
         router.push('/auth'); // or wherever
+        setUser({ id: data.id }); 
       } else {
         const data = await res.json();
         alert(data.error || 'Login failed');
