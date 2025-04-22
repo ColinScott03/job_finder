@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import Content from "../../components/Content";
 import { useState, useContext, createContext } from 'react';
-import { userContext } from "../context/userContext";
 import { useUser } from '../context/userContext';
 
 
