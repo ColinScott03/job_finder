@@ -66,7 +66,7 @@ const Settings = () => {
     }
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-        const target = e.target as HTMLInputElement; // 👈 Cast to HTMLInputElement
+        const target = e.target as HTMLInputElement;
         const { name, type, value } = target;
         const checked = target.checked;
         setFormData(prev => ({
@@ -82,8 +82,8 @@ const Settings = () => {
                 <form className="space-y-4 w-[25vw] text-neutral-300 justify-end"
                     onSubmit={(e) => {
                         e.preventDefault();
+                        handleSubmit(e);
                         router.push('/auth');
-                        handleSubmit;
                     }}
                 >
                     <h3 className="text-xl">Name</h3>
