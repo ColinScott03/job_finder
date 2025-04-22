@@ -17,10 +17,8 @@ const Settings = () => {
         interests: '',
         location: '',
         industry: '',
-        fullTime: false,
-        partTime: false,
-        inPerson: false,
-        remote: false
+        employmentType: '',
+        contractType: '',
     };
 
     const [formData, setFormData] = useState(initialFormState);
@@ -32,10 +30,10 @@ const Settings = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const jobTypes: string[] = [];
-        if (formData.fullTime) jobTypes.push("Full-Time");
-        if (formData.partTime) jobTypes.push("Part-Time");
-        if (formData.inPerson) jobTypes.push("In Person");
-        if (formData.remote) jobTypes.push("Remote");
+        if (formData.employmentType === 'fullTime') jobTypes.push("Full-Time");
+        if (formData.employmentType === 'partTime') jobTypes.push("Part-Time");
+        if (formData.contractType === 'permanent') jobTypes.push("Permanent");
+        if (formData.contractType === 'contract') jobTypes.push("Contract");
 
         const jobTypeString = jobTypes.join(", ");
 
@@ -96,13 +94,13 @@ const Settings = () => {
                         required
                         className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
                     />
-                    <h3 className="text-xl">Interests</h3>
+                    <h3 className="text-xl">Desired Position(s)</h3>
                     <input
                         name="interests"
                         type="string"
                         value={formData.interests}
                         onChange={handleChange}
-                        placeholder="E.g. Gardening, Social, Computers"
+                        placeholder="E.g. Developer, Nurse, Manager"
                         required
                         className="w-full p-2 border bg-slate-900 border-gray-300 rounded"
                     />
@@ -127,35 +125,43 @@ const Settings = () => {
                         className="w-full p-2 border bg-slate-900 border-gray-300 rounded cursor-pointer"
                     >
                         <option value='' disabled selected>Select</option>
-                        <option value='it'>I.T.</option>
-                        <option value='research'>Research</option>
-                        <option value='sales'>Sales</option>
-                        <option value='engineering'>Engineering</option>
+                        <option value='it-jobs'>I.T.</option>
+                        <option value='admin-jobs'>Admin</option>
+                        <option value='sales-jobs'>Sales</option>
+                        <option value='engineering-jobs'>Engineering</option>
                     </select>
 
-                    <h3 className="text-xl">Job Type</h3>
-                    <div className="flex flex-col justify-between items-center w-full h-50 p-2 border bg-slate-900 border-gray-300 rounded">
-                        <div className="">
-                            <input type="checkbox" name="fullTime" checked={formData.fullTime} onChange={handleChange} id="fullTimeBox" className="h-4 w-4" />
-                            <label className="text-2xl">Full-time</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="partTime" checked={formData.partTime} onChange={handleChange} id="partTimeBox" className="h-4 w-4" />
-                            <label className="text-2xl">Part-time</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="inPerson" checked={formData.inPerson} onChange={handleChange} id="inPersonBox" className="h-4 w-4" />
-                            <label className="text-2xl">In Person</label>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="remote" checked={formData.remote} onChange={handleChange} id="remoteBox" className="h-4 w-4" />
-                            <label className="text-2xl">Remote</label>
-                        </div>
+                    <h3 className="text-xl">Employment Type</h3>
+                    <div className="flex flex-col w-full p-2 border bg-slate-900 border-gray-300 rounded">
+                        <label className="text-2xl">
+                            <input type="radio" name="employmentType" value="fullTime" 
+                                checked={formData.employmentType === 'fullTime'} onChange={handleChange} className="h-4 w-4 mr-2" />
+                            Full-time
+                        </label>
+                        <label className="text-2xl">
+        <                   input type="radio" name="employmentType" value="partTime" 
+                                checked={formData.employmentType === 'partTime'} onChange={handleChange} className="h-4 w-4 mr-2" />
+                            Part-time
+                        </label>
+                    </div>
+
+                    <h3 className="text-xl mt-4">Contract Type</h3>
+                    <div className="flex flex-col w-full p-2 border bg-slate-900 border-gray-300 rounded">
+                        <label className="text-2xl">
+                            <input type="radio" name="contractType" value="permanent" 
+                                checked={formData.contractType === 'permanent'} onChange={handleChange} className="h-4 w-4 mr-2" />
+                            Permanent
+                        </label>
+                        <label className="text-2xl">
+                            <input type="radio" name="contractType" value="contract" 
+                                checked={formData.contractType === 'contract'} onChange={handleChange} className="h-4 w-4 mr-2" />
+                            Contract
+                        </label>
                     </div>
                     <div className="flex justify-center gap-20">
                         <button type="submit" className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4 cursor-pointer">Submit</button>
                         <button onClick={clearForm} className="bg-slate-900 text-white px-4 py-2 rounded hover:bg-red-800 mt-4 cursor-pointer">Clear</button>
-                    </div>
+                    </div>      
                 </form>
             </div>
         </Content>
