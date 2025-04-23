@@ -27,8 +27,14 @@ const userSchema = new Schema<IUser>({
     },
     savedJobs: [
         {
+            id: String,
             title: String,
-            company: String
+            company: String,
+            description: String,
+            salary: String,
+            location: String,
+            image: String,
+            link: String
         }
     ],
     name: {
