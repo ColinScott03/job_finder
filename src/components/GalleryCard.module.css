@@ -21,3 +21,18 @@
   .viewButton:hover {
     background-color: #797b81;
   }
+
+  .removeButton {
+    background-color: #e66565;
+    color: black;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  .removeButton:hover {
+    background-color: #d33b3b;
+  }
