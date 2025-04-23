@@ -93,7 +93,7 @@ export default function AuthPage() {
   };
 
   const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + jobs.length) % jobs.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1 + jobs.length) % jobs.length);
   };
 
   if (loading) return <p>Loading!</p>;
