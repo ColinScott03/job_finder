@@ -104,7 +104,6 @@ const Gallery = () => {
             ))
           ) : (
             <div className="col-span-3 text-center text-xl mt-10">
-              No saved jobs found
             </div>
           )}
         </div>
