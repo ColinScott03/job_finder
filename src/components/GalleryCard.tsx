@@ -17,7 +17,7 @@ const GalleryCard = ({ title, image, company, description, salary, location, lin
             <h2 className="text-xl font-semibold mt-2">{title}</h2>
             <p>{company}</p>
             <p>{description}</p>
-            <p>{salary}</p>
+            <p>${salary}</p>
             <p>{location}</p>
             <a href={link}>
                 <button className={styles.viewButton}>View Job Posting</button>

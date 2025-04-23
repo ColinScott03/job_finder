@@ -31,7 +31,7 @@ const Card: React.FC<Props> = ({ job, onPrev, onNext, showNavigation = true }) =
       <img src={job.image} alt={`${job.title} image`} />
       <div className="card-info">
         <p>{job.description}</p>
-        <p>{job.salary_min} - {job.salary_max}</p>
+        <p>${job.salary_min} - ${job.salary_max}</p>
         <p>{job.location}</p>
       </div>
       <a href={job.link}>
