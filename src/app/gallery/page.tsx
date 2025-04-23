@@ -17,25 +17,49 @@ interface Job {
 }
 
 const Gallery = () => {
-  const { id } = useUser();
+  const { id: userId } = useUser();
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchJobs = async () => {
+    try {
+      setIsLoading(true);
+      const res = await fetch(`/api/user-jobs?id=${userId}`);
+      const data = await res.json();
+      setJobs(data.jobs || []);
+    } catch (error) {
+      console.error("Failed to fetch jobs:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    async function fetchJobs() {
-      try {
-        const res = await fetch(`/api/user-jobs?id=${id}`);
-        const data = await res.json();
-        setJobs(data.jobs || []);
-      } catch (error) {
-        console.error("Failed to fetch jobs:", error);
+    if(userId) fetchJobs();
+  }, [userId]);
+
+  const handleRemoveJob = async (jobId: string, jobData: any) => {
+    try {
+      // First update UI optimistically
+      setJobs(prevJobs => prevJobs.filter(job => job.id !== jobId));
+      
+      // Then make the API call
+      const res = await fetch('/api/removeJob', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId, job: jobData })
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to remove job");
+        // If there's an error, we could re-fetch to restore the correct state
+        // fetchJobs();
       }
+    } catch (err) {
+      console.error(err);
+      // Re-fetch to ensure UI is in sync with database
+      fetchJobs();
     }
-
-    fetchJobs();
-  }, [id]);
-
-  const handleRemove = (jobId: string) => {
-    setJobs(prevJobs => prevJobs.filter(job => job.id !== jobId));
   };
 
   return (
@@ -51,22 +75,40 @@ const Gallery = () => {
           </select>
         </div>
       </div>  
-      <div className="grid grid-cols-3">
-        {jobs.map((job) => (
-          <GalleryCard
-            key={job.id}
-            id={job.id}
-            title={job.title}
-            image={job.image}
-            company={job.company}
-            description={job.description}
-            salary={job.salary}
-            location={job.location}
-            link={job.link}
-            onRemove={handleRemove}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="text-center">Loading jobs...</div>
+      ) : (
+        <div className="grid grid-cols-3 gap-4">
+          {jobs.length > 0 ? (
+            jobs.map((job) => (
+              <GalleryCard
+                key={job.id}
+                id={job.id}
+                title={job.title}
+                image={job.image}
+                company={job.company}
+                description={job.description}
+                salary={job.salary}
+                location={job.location}
+                link={job.link}
+                onRemove={() => handleRemoveJob(job.id, {
+                  title: job.title,
+                  company: job.company,
+                  description: job.description, 
+                  salary: job.salary,
+                  location: job.location,
+                  image: job.image,
+                  link: job.link
+                })}
+              />
+            ))
+          ) : (
+            <div className="col-span-3 text-center text-xl mt-10">
+              No saved jobs found
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
