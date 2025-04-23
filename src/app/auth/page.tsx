@@ -33,7 +33,7 @@ export default function AuthPage() {
           };
 
           if (preferences.jobType) {
-            const jobTypes = preferences.jobType.split(',').map(s => s.trim());
+            const jobTypes = preferences.jobType.split(',').map((s: string) => s.trim());
             if (jobTypes.includes('Full-Time')) searchQuery['full_time'] = '&full_time=1';
             if (jobTypes.includes('Part-Time')) searchQuery['part_time'] = '&part_time=1';
             if (jobTypes.includes('Permanent')) searchQuery['permanent'] = '&permanent=1';
@@ -51,9 +51,15 @@ export default function AuthPage() {
     }, [id]);
 
   const handleNext = async () => {
+    const job = jobs[currentIndex];
     const currentJob = {
-      title: jobs[currentIndex].title,
-      company: jobs[currentIndex].company.display_name
+      title: job.title,
+      company: job.company.display_name,
+      description: job.description,
+      salary: job.salary_max,
+      location: job.location.display_name,
+      image: job.company?.logo_url || '/defaultJobImage.png',
+      link: job.redirect_url
     };
     console.log(JSON.stringify({
       userId: id,
@@ -65,6 +71,7 @@ export default function AuthPage() {
       body: JSON.stringify({
         userId: id,
         job: currentJob
+
       })
     });
     setCurrentIndex((prevIndex) => (prevIndex + 1) % jobs.length);

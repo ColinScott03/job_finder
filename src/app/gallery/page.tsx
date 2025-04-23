@@ -1,60 +1,39 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import GalleryCard from "../../components/GalleryCard";
-const jobs = [
-    {
-      id: 1,
-      title: 'Frontend Developer',
-      company: 'Intel',
-      description: 'Build and maintain user interfaces.',
-      salary: '$80,000 - $100,000',
-      location: 'Remote',
-      image: './intel.png',
-      link: '/jobs/frontend-developer',
-    },
-    {
-      id: 2,
-      title: 'Backend Engineer',
-      company: 'TechNova',
-      description: 'Develop server-side logic.',
-      salary: '$90,000 - $110,000',
-      location: 'New York, NY',
-      image: '/TechNova.png',
-      link: '/jobs/backend-engineer',
-    },
-    {
-      id: 3,
-      title: 'Fullstack Developer',
-      company: 'Amazon',
-      description: 'Build and maintain both the front-end and the back-end of a website.',
-      salary: '$90,000 - $110,000',
-      location: 'Seattle, WA',
-      image: '/amazon.png',
-      link: '/jobs/backend-engineer',
-    },
-    {
-      id: 4,
-      title: 'Cloud Security Engineer',
-      company: 'Bank of America',
-      description: 'Responsible for cyber security innovation and architecture.',
-      salary: '$90,000 - $110,000',
-      location: 'Chicago, IL',
-      image: '/BofA.png',
-      link: '/jobs/backend-engineer',
-    },
-    {
-      id: 5,
-      title: 'Data Analyst',
-      company: 'Deloitte',
-      description: 'Analyze government sector data',
-      salary: '$90,000 - $100,000',
-      location: 'New York, NY',
-      image: '/deloitte.png',
-      link: '/jobs/backend-engineer',
-    },
-  ];
+import { useUser } from '../context/userContext';
+
+
+interface Job {
+  id: string;
+  title: string;
+  company: string;
+  description: string;
+  salary: string;
+  location: string;
+  image: string;
+  link: string;
+}
 
 const Gallery = () => {
+  const { id } = useUser();
+  const [jobs, setJobs] = useState<Job[]>([]);
+
+  useEffect(() => {
+    async function fetchJobs() {
+      try {
+        const res = await fetch(`/api/user-jobs?id=${id}`);
+        const data = await res.json();
+        setJobs(data.jobs || []);
+      } catch (error) {
+        console.error("Failed to fetch jobs:", error);
+      }
+    }
+
+    fetchJobs();
+  }, []);
+
     return (
         <div className="p-6 min-h-screen">
             <div className="flex justify-center mb-6 relative">
